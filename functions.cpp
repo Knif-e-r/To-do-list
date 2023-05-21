@@ -158,7 +158,7 @@ void print_info(int a) {
 
 	case DELETE:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tWRITE NOTE NUMBER YOU WANT TO DELETE\n"
+			<< "\n\tWRITE NUMBER OF NOTE YOU WANT TO DELETE\n"
 			<< "_____________________________\n\n";
 		break;
 	
