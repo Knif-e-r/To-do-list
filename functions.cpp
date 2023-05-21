@@ -170,7 +170,7 @@ void print_info(int a) {
 	
 	case CLEAR:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tYOUR TO-DO LIST IS CLEARED\n"
+			<< "\n\tYOUR TO-DO LIST HAS BEEN CLEARED\n"
 			<< "_____________________________\n\n";
 		break;
 
