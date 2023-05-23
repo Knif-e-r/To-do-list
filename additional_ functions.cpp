@@ -1,7 +1,5 @@
 #include "functions.h"
 
-using namespace std;
-
 
 void start_menu() {
 	cout << "\n\n_____________________________\n"
@@ -53,7 +51,7 @@ bool sure() {
 }
 
 
-void give_notes_arr (ifstream from_list_of_notes, vector <string> notes, string note, string action) {
+void give_notes_arr (ifstream &from_list_of_notes, vector <string> &notes, string &note) {
 	
 	from_list_of_notes.open("Notes.txt");
 	if (!from_list_of_notes.is_open())
@@ -65,23 +63,12 @@ void give_notes_arr (ifstream from_list_of_notes, vector <string> notes, string 
 			if (note.size() > 0)
 				notes.push_back(note);
 		}
-
-		getline(cin, action);
-		if (stoi(action) > notes.size())
-			while (stoi(action) > notes.size()) {
-				cout << "There no note with this number.\nPlease, try again: ";
-				getline(cin, action);
-				cout << endl;
-			}
-		if (action[0] == CANCEL) {
-			return;
-		}
 	}
 	from_list_of_notes.close();
 }
 
 
-void send_notes_arr(ofstream in_list_of_notes, vector <string> notes, string note) {
+void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes, string &note) {
 	in_list_of_notes.open("Notes.txt");
 	if (!in_list_of_notes.is_open())
 		cout << "Open file error!";
@@ -90,6 +77,24 @@ void send_notes_arr(ofstream in_list_of_notes, vector <string> notes, string not
 			in_list_of_notes << notes[i] << '\n';
 	}
 	in_list_of_notes.close();
+}
+
+
+bool scan_note_number(string &action, vector <string> &notes) {
+	getline(cin, action);
+	if (stoi(action) > notes.size()) {
+		while (stoi(action) > notes.size()) {
+			cout << "There no note with this number.\nPlease, try again: ";
+			getline(cin, action);
+			if (action[0] == CANCEL) {
+				return false;
+			}
+		}
+		return true;
+	}
+	if (action[0] == CANCEL) {
+		return false;
+	}
 }
 
 

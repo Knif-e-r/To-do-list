@@ -1,6 +1,5 @@
 #include "functions.h"
 
-using namespace std;
 
 void see_note() {
 	ifstream list_of_notes;
@@ -55,19 +54,21 @@ void delete_note() {
 	cout << "0) cancel\n\n";
 	see_note();
 
-	string note, action;
+	string note;
 	vector <string> notes;
 	ifstream from_list_of_notes;
-	ofstream in_list_of_notes;
+	give_notes_arr(from_list_of_notes, notes, note);
 
-	give_notes_arr(from_list_of_notes, notes, note, action);
+	string action;
+	if (!scan_note_number(action, notes))
+		return;
 
 	//Delete element
 	vector <string>::iterator it = notes.begin();
 	it += stoi(action) - 1;
 	notes.erase(it);
 
-	//Writing all notes from vector to Notes.txt
+	ofstream in_list_of_notes;
 	send_notes_arr(in_list_of_notes, notes, note);
 }
 
@@ -76,13 +77,16 @@ void change_note() {
 	cout << "0) cancel\n\n";
 	see_note();
 
-	string note, action;
+	string note;
 	vector <string> notes;
 	ifstream from_list_of_notes;
-	ofstream in_list_of_notes;
+	give_notes_arr(from_list_of_notes, notes, note);
+	
+	string action;
+	if (!scan_note_number(action, notes))
+		return;
 
-	give_notes_arr(from_list_of_notes, notes, note, action);
-		
+
 	//Delete element
 	vector <string>::iterator it = notes.begin();
 	it += stoi(action) - 1;
@@ -91,13 +95,12 @@ void change_note() {
 	//Insert new element ("change" element)
 	it = notes.begin() + (stoi(action) - 1);
 	cout << "Write changed note: ";
-
 	string changed_note; 
 	getline(cin, changed_note);
-
 	notes.insert(it, changed_note);
 	cout << "Note has been changed!\n";
 
+	ofstream in_list_of_notes;
 	send_notes_arr(in_list_of_notes, notes, note);
 }
 
