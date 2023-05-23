@@ -5,12 +5,10 @@ This is simple console to-do list with next functions:
   -  Find note (NOT ready)
   -  Write new note (ready)
   -  Delete note (ready)
-  -  Change note (NOT ready)
+  -  Change note (ready)
   -  Clear to-do list (ready)
  
  
 Known bugs/flaws:
-  - If user enter symbol/symbols instead of number in "delete note" section the program will not be able to process it
-  - If user accidentally writes an empty string in "write new note" section it (empty string) will be saved
+  - If user enter symbol/symbols instead of number in "delete note" and "change note" sections the program will not be able to process it
   - "Find note" section isn't ready
-  - "Change note" section isn't ready
