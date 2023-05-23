@@ -1,6 +1,13 @@
 #pragma once
+#ifndef _FUNCTIONS_H_
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 
 enum ACTIONS {
+	OK = '1',
 	CANCEL = '0',
 	
 	SEE,
@@ -14,6 +21,8 @@ enum ACTIONS {
 
 void start_menu();
 bool sure();
+void give_notes_arr(ifstream from_list_of_notes, vector <string> notes, string note, string action);
+void send_notes_arr(ofstream in_list_of_notes, vector <string> notes, string note);
 
 void print_info(int a);
 
@@ -21,4 +30,7 @@ void see_note();
 void find_note();
 void add_note();
 void delete_note();
+void change_note();
 void clear_to_do_list();
+
+#endif

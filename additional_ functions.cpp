@@ -1,10 +1,7 @@
 #include "functions.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
 
 using namespace std;
+
 
 void start_menu() {
 	cout << "\n\n_____________________________\n"
@@ -21,6 +18,7 @@ void start_menu() {
 		<< "\nPlease, choose a number of action: ";
 }
 
+
 bool sure() {
 	cout << "\n\n_____________________________\n"
 		<< "\n\tARE YOU SURE?\n"
@@ -28,65 +26,35 @@ bool sure() {
 		<< "0) Cancel\n"
 		<< "1) Ok\n";
 
-	string action; getline(cin, action);
+	bool just_for_cycle = true;
 
-	if (stoi(action) == 1) { //Ok
-		return true;
-	}
-	else if (action[0] == CANCEL) {
-		return false;
-	}
-}
+	while (just_for_cycle) {
 
-void see_note() {
-	ifstream list_of_notes;
-	list_of_notes.open("Notes.txt");
-	if (!list_of_notes.is_open())
-		cout << "Open file error!";
-	else {
-		int note_number = 1;
-		while (!list_of_notes.eof())
-		{
-			string note;
-			getline(list_of_notes, note);
-
-			if (note.size() != 0)
-				cout << note_number++ << ") " << note << "\n";
+		string action; getline(cin, action);
+		if (action.size() > 1 || action.size() == 0)
+			action = "9";
+		if (action[0] == OK) {
+			return true;
+		}
+		else if (action[0] == CANCEL) {
+			return false;
+		}
+		else {
+			cout << "There is no action with this number.\nPlease, try again.\n";
+			system("pause");
+			system("cls");
+			cout << "\n\n_____________________________\n"
+				<< "\n\tARE YOU SURE?\n"
+				<< "_____________________________\n\n"
+				<< "0) Cancel\n"
+				<< "1) Ok\n";
 		}
 	}
-	list_of_notes.close();
 }
 
 
-void find_note() {
-
-}
-
-
-void add_note() {
-	ofstream list_of_notes;
-	list_of_notes.open("Notes.txt", ofstream::app);
-	if (!list_of_notes.is_open())
-		cout << "Open file error!";
-	else {
-		string note;
-		getline(cin, note);
-		note += "\n";
-		list_of_notes << note;
-		
-	}
-	list_of_notes.close();
-}
-
-
-void delete_note() {
-	cout << "0) cancel\n\n";
-	see_note();
-
-	ifstream from_list_of_notes;
-	string note;
-	vector <string> notes;
-
+void give_notes_arr (ifstream from_list_of_notes, vector <string> notes, string note, string action) {
+	
 	from_list_of_notes.open("Notes.txt");
 	if (!from_list_of_notes.is_open())
 		cout << "Open file error!";
@@ -98,7 +66,7 @@ void delete_note() {
 				notes.push_back(note);
 		}
 
-		string action; getline(cin, action);
+		getline(cin, action);
 		if (stoi(action) > notes.size())
 			while (stoi(action) > notes.size()) {
 				cout << "There no note with this number.\nPlease, try again: ";
@@ -108,14 +76,12 @@ void delete_note() {
 		if (action[0] == CANCEL) {
 			return;
 		}
-		
-		vector <string>::iterator it = notes.begin();
-		it += stoi(action) - 1;
-		notes.erase(it);
 	}
 	from_list_of_notes.close();
+}
 
-	ofstream in_list_of_notes;
+
+void send_notes_arr(ofstream in_list_of_notes, vector <string> notes, string note) {
 	in_list_of_notes.open("Notes.txt");
 	if (!in_list_of_notes.is_open())
 		cout << "Open file error!";
@@ -124,16 +90,6 @@ void delete_note() {
 			in_list_of_notes << notes[i] << '\n';
 	}
 	in_list_of_notes.close();
-}
-
-void change_note() {
-
-}
-
-void clear_to_do_list() {
-		ofstream list_of_notes;
-		list_of_notes.open("Notes.txt", ofstream::trunc);
-		list_of_notes.close();
 }
 
 
@@ -161,13 +117,13 @@ void print_info(int a) {
 			<< "\n\tWRITE NUMBER OF NOTE YOU WANT TO DELETE\n"
 			<< "_____________________________\n\n";
 		break;
-	
+
 	case CHANGE:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tWRITE NOTE NUMBER YOU WANT TO CHANGE\n"
+			<< "\n\tWRITE NUMBER OF NOTE YOU WANT TO CHANGE\n"
 			<< "_____________________________\n\n";
 		break;
-	
+
 	case CLEAR:
 		cout << "\n\n_____________________________\n"
 			<< "\n\tYOUR TO-DO LIST HAS BEEN CLEARED\n"

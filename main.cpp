@@ -1,6 +1,4 @@
 #include "functions.h"
-#include <iostream>
-#include <string>
 
 
 int main() {
@@ -45,6 +43,7 @@ int main() {
 			case CHANGE:
 				system("cls");
 				print_info(num_of_act[0]);
+				change_note();
 				system("pause");
 				break;
 			
