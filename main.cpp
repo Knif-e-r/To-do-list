@@ -8,8 +8,8 @@ int main() {
 		system("cls");
 		start_menu();
 
-		string num_of_act;
-		getline(cin, num_of_act);
+		std::string num_of_act;
+		getline(std::cin, num_of_act);
 		
 		if (num_of_act.size() > 1)
 			num_of_act = '0';
