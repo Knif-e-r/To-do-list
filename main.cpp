@@ -25,6 +25,7 @@ int main() {
 			case FIND:
 				system("cls");
 				print_info(num_of_act[0]);
+				find_note();
 				system("pause");
 				break;
 

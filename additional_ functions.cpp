@@ -1,5 +1,6 @@
 #include "functions.h"
 
+using namespace std;
 
 void start_menu() {
 	cout << "\n\n_____________________________\n"
@@ -8,7 +9,7 @@ void start_menu() {
 		<< "\nWhat do you want to do?\n\n"
 		<< "1) See my notes\n"
 		<< "2) Find note\n"
-		<< "3) Write new note\n"
+		<< "3) Add new note\n"
 		<< "4) Delete note\n"
 		<< "5) Change note\n"
 		<< "6) Clear my to-do list\n"
@@ -22,7 +23,8 @@ bool sure() {
 		<< "\n\tARE YOU SURE?\n"
 		<< "_____________________________\n\n"
 		<< "0) Cancel\n"
-		<< "1) Ok\n";
+		<< "1) Ok\n"
+		<< "\nYour choise: ";
 
 	bool just_for_cycle = true;
 
@@ -45,13 +47,49 @@ bool sure() {
 				<< "\n\tARE YOU SURE?\n"
 				<< "_____________________________\n\n"
 				<< "0) Cancel\n"
-				<< "1) Ok\n";
+				<< "1) Ok\n"
+				<< "\nYour choise: ";
 		}
 	}
 }
 
 
-void give_notes_arr (ifstream &from_list_of_notes, vector <string> &notes, string &note) {
+bool scan_note_number(string& action, vector <string>& notes) {
+	cout << "\nYour answer: ";
+	getline(cin, action);
+
+	bool is_symbol = false;
+	for (auto c : action) {
+		if ('0' > c || c > '9') {
+			is_symbol = true;
+			break;
+		}
+	}
+
+	if (!is_symbol) {
+		if (stoi(action) > notes.size()) {
+			while (stoi(action) > notes.size()) {
+				cout << "\nThere no note with this number.\nPlease, try again.";
+				cout << "\nYour answer: ";
+				getline(cin, action);
+				if (action[0] == CANCEL) {
+					return false;
+				}
+			}
+			return true;
+		}
+		if (action[0] == CANCEL) {
+			return false;
+		}
+	}
+	else {
+		cout << "\nThis isn't a number.\nPlease, try again.";
+		scan_note_number(action, notes);
+	}
+}
+
+
+void get_notes_arr (ifstream &from_list_of_notes, vector <string> &notes) {
 	
 	from_list_of_notes.open("Notes.txt");
 	if (!from_list_of_notes.is_open())
@@ -59,6 +97,7 @@ void give_notes_arr (ifstream &from_list_of_notes, vector <string> &notes, strin
 	else {
 		while (!from_list_of_notes.eof())
 		{
+			string note;
 			getline(from_list_of_notes, note);
 			if (note.size() > 0)
 				notes.push_back(note);
@@ -68,7 +107,7 @@ void give_notes_arr (ifstream &from_list_of_notes, vector <string> &notes, strin
 }
 
 
-void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes, string &note) {
+void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes) {
 	in_list_of_notes.open("Notes.txt");
 	if (!in_list_of_notes.is_open())
 		cout << "Open file error!";
@@ -80,52 +119,36 @@ void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes, string &
 }
 
 
-bool scan_note_number(string &action, vector <string> &notes) {
-	getline(cin, action);
-	if (stoi(action) > notes.size()) {
-		while (stoi(action) > notes.size()) {
-			cout << "There no note with this number.\nPlease, try again: ";
-			getline(cin, action);
-			if (action[0] == CANCEL) {
-				return false;
-			}
-		}
-		return true;
-	}
-	if (action[0] == CANCEL) {
-		return false;
-	}
-}
-
-
 void print_info(int a) {
 
 	switch (a) {
 	case SEE:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tHERE ARE YOUR NOTES\n"
+			<< "\n     HERE ARE YOUR NOTES\n"
 			<< "_____________________________\n\n";
 		break;
 
 	case FIND:
-		std::cout << "\nNotes you looked for:\n";
+		cout << "\n\n_____________________________\n"
+			<< "\n     SEARCH NEEDED NOTES\n"
+			<< "_____________________________\n\n";
 		break;
 
 	case ADD:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tWRITE NEW NOTE\n"
+			<< "\n\tADD NEW NOTE\n"
 			<< "_____________________________\n\n";
 		break;
 
 	case DELETE:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tWRITE NUMBER OF NOTE YOU WANT TO DELETE\n"
+			<< "\n\tDELETE NOTE\n"
 			<< "_____________________________\n\n";
 		break;
 
 	case CHANGE:
 		cout << "\n\n_____________________________\n"
-			<< "\n\tWRITE NUMBER OF NOTE YOU WANT TO CHANGE\n"
+			<< "\n\tCHANGE NOTE\n"
 			<< "_____________________________\n\n";
 		break;
 
@@ -142,9 +165,9 @@ void print_info(int a) {
 		break;
 
 	default:
-		cout << "\n\n_____________________________\n"
-			<< "\n\tTHERE IS NOT ACTIONS WITH THIS NUMBER\n"
-			<< "_____________________________\n\n";
+		cout << "\n\n_________________________________________\n"
+			<< "\n\  HERE IS NO ACTIONS WITH THIS NUMBER\n"
+			<< "_________________________________________\n\n";
 		break;
 	};
 }
