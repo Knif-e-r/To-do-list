@@ -1,7 +1,5 @@
 #include "functions.h"
 
-using namespace std;
-
 void start_menu() {
 	cout << "\n\n_____________________________\n"
 		<< "\n\tMY TO-DO LIST\n"
