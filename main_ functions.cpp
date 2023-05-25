@@ -1,7 +1,5 @@
 #include "functions.h"
 
-using namespace std;
-
 void see_note() {
 	ifstream list_of_notes;
 	list_of_notes.open("Notes.txt");

@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 enum ACTIONS {
 	OK = '1',
 	CANCEL = '0',
