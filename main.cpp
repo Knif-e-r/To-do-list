@@ -8,8 +8,8 @@ int main() {
 		system("cls");
 		start_menu();
 
-		std::string num_of_act;
-		getline(std::cin, num_of_act);
+		string num_of_act;
+		getline(cin, num_of_act);
 		
 		if (num_of_act.size() > 1)
 			num_of_act = '0';
@@ -25,6 +25,7 @@ int main() {
 			case FIND:
 				system("cls");
 				print_info(num_of_act[0]);
+				find_note();
 				system("pause");
 				break;
 
