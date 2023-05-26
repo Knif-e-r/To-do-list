@@ -23,8 +23,8 @@ enum ACTIONS {
 
 void start_menu();
 bool sure();
-void give_notes_arr(ifstream &from_list_of_notes, vector <string> &notes, string &note);
-void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes, string &note);
+void get_notes_arr(ifstream &from_list_of_notes, vector <string> &notes);
+void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes);
 bool scan_note_number(string &action, vector <string>& notes);
 
 void print_info(int a);
