@@ -2,7 +2,7 @@ To-do List v.1.0
 
 This is simple console to-do list with next functions:
   -  See notes (ready)
-  -  Find note (NOT ready)
+  -  Find note (ready)
   -  Write new note (ready)
   -  Delete note (ready)
   -  Change note (ready)
@@ -10,5 +10,4 @@ This is simple console to-do list with next functions:
  
  
 Known bugs/flaws:
-  - If user enter symbol/symbols instead of number in "delete note" and "change note" sections the program will not be able to process it
-  - "Find note" section isn't ready
+  - Not found
