@@ -6,13 +6,13 @@
 #include <string>
 #include <vector>
 
-using namespace std;
+enum CHOIСE {
+	CANCEL = '0',
+	OK
+};
 
 enum ACTIONS {
-	OK = '1',
-	CANCEL = '0',
-	
-	SEE,
+	SEE = '1',
 	FIND,
 	ADD,
 	DELETE,
@@ -23,9 +23,9 @@ enum ACTIONS {
 
 void start_menu();
 bool sure();
-void get_notes_arr(ifstream &from_list_of_notes, vector <string> &notes);
-void send_notes_arr(ofstream &in_list_of_notes, vector <string> &notes);
-bool scan_note_number(string &action, vector <string>& notes);
+void get_notes_arr(std::ifstream& from_list_of_notes, std::vector <std::string>& notes);
+void send_notes_arr(std::ofstream& in_list_of_notes, std::vector <std::string>& notes);
+bool scan_note_number(std::string& action, std::vector <std::string>& notes);
 
 void print_info(int a);
 
