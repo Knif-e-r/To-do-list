@@ -164,7 +164,7 @@ void print_info(int a) {
 
 	default:
 		cout << "\n\n_________________________________________\n"
-			<< "\n\  HERE IS NO ACTIONS WITH THIS NUMBER\n"
+			<< "\n  HERE IS NO ACTIONS WITH THIS NUMBER\n"
 			<< "_________________________________________\n\n";
 		break;
 	};
