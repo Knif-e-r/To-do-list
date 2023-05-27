@@ -17,38 +17,6 @@ void start_menu() {
 		<< "\nPlease, choose a number of action: ";
 }
 
-//It doesn't work correctly (has problems with big strings).
-/*
-bool sure() {
-	system("cls");
-	cout << "\n\n_____________________________________\n"
-		<< "\n\t    ARE YOU SURE?\n"
-		<< "_____________________________________\n\n"
-		<< "0) Cancel\n"
-		<< "1) Ok\n"
-		<< "\nYour choise: ";
-
-		string action; getline(cin, action);
-		if (action.size() > 1 || action.size() == 0)
-			action = "9";
-
-		switch (action[0]) {
-		case OK:
-			return true;
-			break;
-
-		case CANCEL:
-			return false;
-			break;
-
-		default:
-			cout << "There is no action with this number.\nPlease, try again.\n";
-			system("pause");
-			sure();
-			break;
-		};
-}
-*/
 
 bool sure() {
 	system("cls");
