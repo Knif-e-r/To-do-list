@@ -31,23 +31,24 @@ bool sure() {
 		string action; getline(cin, action);
 		if (action.size() > 1 || action.size() == 0)
 			action = "9";
-		if (action[0] == OK) {
+		switch (action[0]) {
+		case OK:
 			return true;
-		}
-		else if (action[0] == CANCEL) {
+			break;
+		case CANCEL:
 			return false;
-		}
-		else {
+			break;
+		default:
 			cout << "There is no action with this number.\nPlease, try again.\n";
-			system("pause");
-			system("cls");
+			system("pause"); system("cls");
 			cout << "\n\n_____________________________________\n"
 				<< "\n\t    ARE YOU SURE?\n"
 				<< "_____________________________________\n\n"
 				<< "0) Cancel\n"
 				<< "1) Ok\n"
 				<< "\nYour choise: ";
-		}
+			break;
+		};
 	}
 }
 
