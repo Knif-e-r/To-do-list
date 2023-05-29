@@ -1,12 +1,12 @@
 To-do List v.1.0
 
-This is simple console to-do list with next functions:
-  -  See notes (ready)
-  -  Find note (ready)
-  -  Write new note (ready)
-  -  Delete note (ready)
-  -  Change note (ready)
-  -  Clear to-do list (ready)
+This is console to-do list with simple menu next functions:
+  -  See notes
+  -  Find note
+  -  Write new note
+  -  Delete note
+  -  Change note
+  -  Clear to-do list
  
  
 Known bugs/flaws:
