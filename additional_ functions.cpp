@@ -57,12 +57,15 @@ bool scan_note_number(string& action, vector <string>& notes) {
 	getline(cin, action);
 
 	bool is_symbol = false;
-	for (auto c : action) {
-		if ('0' > c || c > '9') {
-			is_symbol = true;
-			break;
+	if (action.size() == 0) //new code
+		is_symbol = true;
+	else
+		for (auto c : action) {
+			if ('0' > c || c > '9') {
+				is_symbol = true;
+				break;
+			}
 		}
-	}
 
 	if (!is_symbol) {
 		if (stoi(action) > notes.size()) {
