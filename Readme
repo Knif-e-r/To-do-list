@@ -1,16 +1,19 @@
 To-do List v.1.0
 
 This is simple console to-do list with next functions:
-  -  See notes (ready)
-  -  Find note (NOT ready)
-  -  Write new note (ready)
-  -  Delete note (ready)
-  -  Change note (NOT ready)
-  -  Clear to-do list (ready)
+  +  See notes (ready)
+  +  Find note (ready)
+  +  Write new note (ready)
+  +  Delete note (ready)
+  -  Change note (has bugs/flaws)
+  +  Clear to-do list (ready)
  
  
 Known bugs/flaws:
-  - If user enter symbol/symbols instead of number in "delete note" section the program will not be able to process it
-  - If user accidentally writes an empty string in "write new note" section it (empty string) will be saved
-  - "Find note" section isn't ready
-  - "Change note" section isn't ready
+  - "Change note" section:
+    1) If user selects note for changing and than enter void string the note will be deleted
+
+
+Fixed bugs/flaws:
+  + "Change note" section:
+    1) If user enters void string the program will crash ("debug error, abort() has been called")
