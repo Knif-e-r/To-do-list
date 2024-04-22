@@ -100,18 +100,27 @@ void change_note() {
 		return;
 
 
-	//Delete element (1st step of "changing" element)
+	//Copy element that will be deleted (1st step of "changing" element)
+	string note_copy = notes[stoi(note_number) - 1];
+
+	//Delete element (2nd step of "changing" element)
 	vector <string>::iterator it = notes.begin();
 	it += stoi(note_number) - 1;
 	notes.erase(it);
 
-	//Insert new element (2nd step of "changing" element)
+	//Insert new element (3rd step of "changing" element)
 	it = notes.begin() + (stoi(note_number) - 1);
 	cout << "Write changes: ";
 	string changed_note; 
 	getline(cin, changed_note);
-	notes.insert(it, changed_note);
-	cout << "Note has been changed!\n";
+	if (changed_note.size() != 0) {
+		notes.insert(it, changed_note);
+		cout << "Note has been changed!\n";
+	}
+	else {
+		notes.insert(it, note_copy);
+		cout << "\nNote hasn's been changed!\nEmpty string has been entered!\n";
+	}
 
 	ofstream in_list_of_notes;
 	send_notes_arr(in_list_of_notes, notes);
