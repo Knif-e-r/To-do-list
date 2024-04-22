@@ -57,7 +57,7 @@ bool scan_note_number(string& action, vector <string>& notes) {
 	getline(cin, action);
 
 	bool is_symbol = false;
-	if (action.size() == 0) //new code
+	if (action.size() == 0)
 		is_symbol = true;
 	else
 		for (auto c : action) {
