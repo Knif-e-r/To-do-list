@@ -99,7 +99,6 @@ void change_note() {
 	if (!scan_note_number(note_number, notes))
 		return;
 
-
 	//Copy element that will be deleted (1st step of "changing" element)
 	string note_copy = notes[stoi(note_number) - 1];
 
