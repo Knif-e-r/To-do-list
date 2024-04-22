@@ -1,8 +1,5 @@
  - Change note (has bugs/flaws)
- 
-Known bugs/flaws:
-    1) If user selects note for changing and than enter void string the note will be deleted
-
 
 Fixed bugs/flaws:
     1) If user enters void string the program will crash ("debug error, abort() has been called")
+    2) If user selects note for changing and than enter void string the note will be deleted
