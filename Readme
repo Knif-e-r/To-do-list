@@ -9,7 +9,9 @@ This is console to-do list with simple menu and next functions:
   -  Change note
   -  Clear to-do list
  
- 
+Known bugs/flaws:
+  1) If user works with Cyrillic letters are displayed correctly only in the program. If open txt-file with notes in other program (for example "Notepad") Cyrillic letters will not be displayed correctly.
+
 Fixed bugs/flaws:
   - "Change note" section:
     1) If user enters void string the program will crash ("debug error, abort() has been called")
