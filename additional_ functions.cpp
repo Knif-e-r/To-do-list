@@ -61,12 +61,15 @@ bool scan_note_number(string& action, vector <string>& notes) {
 		action += "N";
 
 	bool is_symbol = false;
-	for (auto c : action) {
-		if ('0' > c || c > '9') {
-			is_symbol = true;
-			break;
+	if (action.size() == 0)
+		is_symbol = true;
+	else
+		for (auto c : action) {
+			if ('0' > c || c > '9') {
+				is_symbol = true;
+				break;
+			}
 		}
-	}
 
 	if (!is_symbol && stoi(action) <= notes.size()) {
 		if (action[0] == CANCEL) {
